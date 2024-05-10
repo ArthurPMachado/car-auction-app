@@ -1,6 +1,6 @@
 export interface ICarProps {
   name: string
-  license_plate: string
+  licensePlate: string
   year: number
   brand: string
   category: string
@@ -8,5 +8,5 @@ export interface ICarProps {
   initialBid: number
   isBidFinished: boolean
   createdAt: Date
-  updatedAt: Date | null
+  updatedAt?: Date | null
 }

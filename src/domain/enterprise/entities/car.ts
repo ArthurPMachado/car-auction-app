@@ -4,10 +4,14 @@ import { ICarProps } from './interfaces/ICarProps'
 import { Optional } from '@/core/types/optional'
 
 export class Car extends Entity<ICarProps> {
-  static create(props: Optional<ICarProps, 'createdAt'>, id?: UniqueEntityID) {
+  static create(
+    props: Optional<ICarProps, 'createdAt' | 'isBidFinished'>,
+    id?: UniqueEntityID,
+  ) {
     const car = new Car(
       {
         ...props,
+        isBidFinished: props.isBidFinished ?? false,
         createdAt: props.createdAt ?? new Date(),
       },
       id,
@@ -20,8 +24,8 @@ export class Car extends Entity<ICarProps> {
     return this.props.name
   }
 
-  get license_plate() {
-    return this.props.license_plate
+  get licensePlate() {
+    return this.props.licensePlate
   }
 
   get year() {

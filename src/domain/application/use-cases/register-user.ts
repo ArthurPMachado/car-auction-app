@@ -8,7 +8,7 @@ import { left, right } from '@/core/either'
 import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 import { User } from '@/domain/enterprise/entities/user'
 
-export class RegisterUser {
+export class RegisterUserUseCase {
   constructor(
     private usersRepository: IUsersRepository,
     private hashGenerator: HashGenerator,
