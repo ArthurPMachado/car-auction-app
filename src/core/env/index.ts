@@ -7,6 +7,15 @@ const envSchema = z.object({
   HOST: z.coerce.string().default('0.0.0.0'),
   JWT_PRIVATE_KEY: z.string(),
   JWT_PUBLIC_KEY: z.string(),
+  DATABASE_HOST: z.string(),
+  DATABASE_PORT: z.coerce.number().default(27017),
+  USERS_COLLECTION: z.string().default('users'),
+  CARS_COLLECTION: z.string().default('cars'),
+  MONGO_INITDB_ROOT_USERNAME: z.string(),
+  MONGO_INITDB_ROOT_PASSWORD: z.string(),
+  MONGO_INITDB_DATABASE: z.string(),
+  SERVER_HOST: z.string(),
+  SERVER_PORT: z.coerce.number(),
 })
 
 const _env = envSchema.safeParse(process.env)
