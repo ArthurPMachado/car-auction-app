@@ -1,11 +1,13 @@
 /* eslint-disable no-use-before-define */
 import { env } from '@/core/env'
-import { MongoClient } from 'mongodb'
+import { Db, MongoClient } from 'mongodb'
 
 export class MongoService {
   private static instance: MongoService
 
   private client: MongoClient
+
+  public databaseInstance: Db
 
   constructor() {
     const {
@@ -14,18 +16,15 @@ export class MongoService {
       MONGO_INITDB_DATABASE: DATABASE_DB,
       DATABASE_HOST,
       DATABASE_PORT,
-      USERS_COLLECTION,
-      CARS_COLLECTION,
     } = env
 
     const URI = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}`
 
     this.client = new MongoClient(URI)
 
-    const databaseInstance = this.client.db(DATABASE_DB)
+    this.databaseInstance = this.client.db(DATABASE_DB)
 
-    databaseInstance.collection(USERS_COLLECTION)
-    databaseInstance.collection(CARS_COLLECTION)
+    this.connect()
   }
 
   static getInstance() {
