@@ -6,7 +6,7 @@ import {
 } from './interfaces/IGetCarUseCase'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 
-export class RegisterBidUseCase {
+export class GetCarUseCase {
   constructor(private carsRepository: ICarsRepository) {}
 
   async execute({
