@@ -14,7 +14,7 @@ export interface ICarProps {
   specifications: string
   initialBid: number
   isBidFinished: boolean
-  bids?: Bids[] | null
+  bids: Bids[] | []
   createdAt: Date
   updatedAt?: Date | null
 }

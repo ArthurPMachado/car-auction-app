@@ -1,6 +1,6 @@
 import { Entity } from '@/core/entities/entity'
 import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-import { ICarProps } from './interfaces/ICarProps'
+import { Bids, ICarProps } from './interfaces/ICarProps'
 import { Optional } from '@/core/types/optional'
 
 export class Car extends Entity<ICarProps> {
@@ -55,6 +55,15 @@ export class Car extends Entity<ICarProps> {
 
   set isBidFinished(isBidFinished: boolean) {
     this.props.isBidFinished = isBidFinished
+    this.touch()
+  }
+
+  get bids() {
+    return this.props.bids
+  }
+
+  set bids(bids: Bids[]) {
+    this.props.bids = bids
     this.touch()
   }
 
