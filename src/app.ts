@@ -6,7 +6,7 @@ export const app = express()
 
 app.use(express.json())
 
-app.use((error: Error, request: Request, response: Response) => {
+app.use((error: Error, _: Request, response: Response) => {
   if (error instanceof ZodError) {
     return response
       .status(400)
