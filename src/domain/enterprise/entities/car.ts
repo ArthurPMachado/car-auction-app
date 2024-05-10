@@ -5,7 +5,7 @@ import { Optional } from '@/core/types/optional'
 
 export class Car extends Entity<ICarProps> {
   static create(
-    props: Optional<ICarProps, 'createdAt' | 'isBidFinished'>,
+    props: Optional<ICarProps, 'createdAt' | 'isBidFinished' | 'bids'>,
     id?: UniqueEntityID,
   ) {
     const car = new Car(
@@ -13,6 +13,7 @@ export class Car extends Entity<ICarProps> {
         ...props,
         isBidFinished: props.isBidFinished ?? false,
         createdAt: props.createdAt ?? new Date(),
+        bids: props.bids ?? [],
       },
       id,
     )
