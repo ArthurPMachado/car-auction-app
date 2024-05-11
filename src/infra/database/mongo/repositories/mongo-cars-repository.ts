@@ -33,7 +33,7 @@ export class MongoCarsRepository implements ICarsRepository {
       year: car.year,
       category: car.category,
       specifications: car.specifications,
-      isBidFinished: car.isBidFinished,
+      isAuctionFinished: car.isAuctionFinished,
       initialBid: car.initialBid,
       bids: car.bids,
       createdAt: car.createdAt,

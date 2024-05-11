@@ -20,11 +20,11 @@ export class CloseAuctionUseCase {
       return left(new ResourceNotFoundError())
     }
 
-    if (car.isBidFinished) {
+    if (car.isAuctionFinished) {
       return left(new AuctionAlreadyFinishedError())
     }
 
-    car.isBidFinished = true
+    car.isAuctionFinished = true
 
     await this.carsRepository.save(car)
 

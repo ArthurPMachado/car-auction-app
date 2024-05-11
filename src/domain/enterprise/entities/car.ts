@@ -5,13 +5,13 @@ import { Optional } from '@/core/types/optional'
 
 export class Car extends Entity<ICarProps> {
   static create(
-    props: Optional<ICarProps, 'createdAt' | 'isBidFinished' | 'bids'>,
+    props: Optional<ICarProps, 'createdAt' | 'isAuctionFinished' | 'bids'>,
     id?: UniqueEntityID,
   ) {
     const car = new Car(
       {
         ...props,
-        isBidFinished: props.isBidFinished ?? false,
+        isAuctionFinished: props.isAuctionFinished ?? false,
         createdAt: props.createdAt ?? new Date(),
         bids: props.bids ?? [],
       },
@@ -49,12 +49,12 @@ export class Car extends Entity<ICarProps> {
     return this.props.initialBid
   }
 
-  get isBidFinished() {
-    return this.props.isBidFinished
+  get isAuctionFinished() {
+    return this.props.isAuctionFinished
   }
 
-  set isBidFinished(isBidFinished: boolean) {
-    this.props.isBidFinished = isBidFinished
+  set isAuctionFinished(isAuctionFinished: boolean) {
+    this.props.isAuctionFinished = isAuctionFinished
     this.touch()
   }
 

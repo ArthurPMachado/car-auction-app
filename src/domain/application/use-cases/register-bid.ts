@@ -20,7 +20,7 @@ export class RegisterBidUseCase {
       return left(new ResourceNotFoundError())
     }
 
-    if (car.isBidFinished) {
+    if (car.isAuctionFinished) {
       return left(new AuctionAlreadyFinishedError())
     }
 
