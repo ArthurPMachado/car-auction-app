@@ -3,7 +3,7 @@ import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-e
 import { Car } from '@/domain/enterprise/entities/car'
 
 export interface IGetCarUseCaseRequest {
-  carId: string
+  licensePlate: string
 }
 
 export type IGetCarUseCaseResponse = Either<

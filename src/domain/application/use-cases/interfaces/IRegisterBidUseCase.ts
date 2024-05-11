@@ -3,7 +3,7 @@ import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-e
 import { Bids } from '@/domain/enterprise/entities/interfaces/ICarProps'
 
 export interface IRegisterBidUseCaseRequest {
-  carId: string
+  licensePlate: string
   userId: string
   bid: number
 }
@@ -11,7 +11,7 @@ export interface IRegisterBidUseCaseRequest {
 export type IRegisterBidUseCaseResponse = Either<
   ResourceNotFoundError,
   {
-    carId: string
+    licensePlate: string
     bid: Bids
   }
 >

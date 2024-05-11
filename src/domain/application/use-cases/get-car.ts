@@ -10,9 +10,9 @@ export class GetCarUseCase {
   constructor(private carsRepository: ICarsRepository) {}
 
   async execute({
-    carId,
+    licensePlate,
   }: IGetCarUseCaseRequest): Promise<IGetCarUseCaseResponse> {
-    const car = await this.carsRepository.findById(carId)
+    const car = await this.carsRepository.findByLicensePlate(licensePlate)
 
     if (!car) {
       return left(new ResourceNotFoundError())

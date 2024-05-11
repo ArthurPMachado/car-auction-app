@@ -12,9 +12,9 @@ export class CloseAuctionUseCase {
   constructor(private carsRepository: ICarsRepository) {}
 
   async execute({
-    carId,
+    licensePlate,
   }: ICloseAuctionUseCaseRequest): Promise<ICloseAuctionUseCaseResponse> {
-    const car = await this.carsRepository.findById(carId)
+    const car = await this.carsRepository.findByLicensePlate(licensePlate)
 
     if (!car) {
       return left(new ResourceNotFoundError())

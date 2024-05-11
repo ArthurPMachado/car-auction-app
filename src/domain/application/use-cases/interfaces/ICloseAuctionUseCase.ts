@@ -4,7 +4,7 @@ import { Car } from '@/domain/enterprise/entities/car'
 import { BidAlreadyFinishedError } from '../errors/bid-already-finished-error'
 
 export interface ICloseAuctionUseCaseRequest {
-  carId: string
+  licensePlate: string
 }
 
 export type ICloseAuctionUseCaseResponse = Either<

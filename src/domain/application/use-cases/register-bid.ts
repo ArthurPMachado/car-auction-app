@@ -11,11 +11,11 @@ export class RegisterBidUseCase {
   constructor(private carsRepository: ICarsRepository) {}
 
   async execute({
-    carId,
+    licensePlate,
     userId,
     bid,
   }: IRegisterBidUseCaseRequest): Promise<IRegisterBidUseCaseResponse> {
-    const car = await this.carsRepository.findById(carId)
+    const car = await this.carsRepository.findByLicensePlate(licensePlate)
 
     if (!car) {
       return left(new ResourceNotFoundError())
@@ -34,7 +34,7 @@ export class RegisterBidUseCase {
     }
 
     return right({
-      carId,
+      licensePlate,
       bid: bidResponse,
     })
   }
