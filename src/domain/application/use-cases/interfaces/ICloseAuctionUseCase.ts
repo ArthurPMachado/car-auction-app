@@ -11,7 +11,7 @@ export type ICloseAuctionUseCaseResponse = Either<
   ResourceNotFoundError | BidAlreadyFinishedError,
   {
     car: Car
-    userId: string
+    userEmail: string
     bidValue: number
   }
 >

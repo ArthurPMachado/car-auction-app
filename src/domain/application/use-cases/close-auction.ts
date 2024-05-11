@@ -33,7 +33,7 @@ export class CloseAuctionUseCase {
 
     const response = {
       car,
-      userId: bidWinner.userId.toString(),
+      userEmail: bidWinner.userEmail,
       bidValue: bidWinner.bid,
     }
 
