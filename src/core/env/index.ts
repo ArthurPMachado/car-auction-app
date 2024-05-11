@@ -16,6 +16,7 @@ const envSchema = z.object({
   MONGO_INITDB_DATABASE: z.string(),
   SERVER_HOST: z.string(),
   SERVER_PORT: z.coerce.number(),
+  TOKEN_EXPIRATION: z.string().optional().default('15m'),
 })
 
 const _env = envSchema.safeParse(process.env)
