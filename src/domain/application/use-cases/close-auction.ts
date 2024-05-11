@@ -5,7 +5,7 @@ import {
   ICloseAuctionUseCaseRequest,
   ICloseAuctionUseCaseResponse,
 } from './interfaces/ICloseAuctionUseCase'
-import { BidAlreadyFinishedError } from './errors/bid-already-finished-error'
+import { AuctionAlreadyFinishedError } from './errors/auction-already-finished-error'
 import { RankingsBidsAndGetAuctionWinner } from './utils/ranking-bids-and-get-auction-winner'
 
 export class CloseAuctionUseCase {
@@ -21,7 +21,7 @@ export class CloseAuctionUseCase {
     }
 
     if (car.isBidFinished) {
-      return left(new BidAlreadyFinishedError())
+      return left(new AuctionAlreadyFinishedError())
     }
 
     car.isBidFinished = true

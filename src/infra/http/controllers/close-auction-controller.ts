@@ -1,8 +1,8 @@
 import { Request, Response } from 'express'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
 import { makeCloseAuctionUseCase } from '../factories/make-close-auction-use-case'
-import { BidAlreadyFinishedError } from '@/domain/application/use-cases/errors/bid-already-finished-error'
 import { AuctionWinnerPresenter } from '../presenters/auction-winner-presenter'
+import { AuctionAlreadyFinishedError } from '@/domain/application/use-cases/errors/auction-already-finished-error'
 
 export async function CloseAuctionController(
   request: Request,
@@ -22,7 +22,7 @@ export async function CloseAuctionController(
         return response.status(404).send({
           message: error.message,
         })
-      case BidAlreadyFinishedError:
+      case AuctionAlreadyFinishedError:
         return response.status(409).send({
           message: error.message,
         })
