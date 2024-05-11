@@ -5,6 +5,7 @@ import {
   IRegisterBidUseCaseResponse,
 } from './interfaces/IRegisterBidUseCase'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { BidAlreadyFinishedError } from './errors/bid-already-finished-error'
 
 export class RegisterBidUseCase {
   constructor(private carsRepository: ICarsRepository) {}
@@ -17,6 +18,10 @@ export class RegisterBidUseCase {
 
     if (!car) {
       return left(new ResourceNotFoundError())
+    }
+
+    if (car.isBidFinished) {
+      return left(new BidAlreadyFinishedError())
     }
 
     car.bids.push(bid)
