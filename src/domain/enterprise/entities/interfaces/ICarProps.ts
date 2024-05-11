@@ -1,7 +1,5 @@
-import { UniqueEntityID } from '@/core/entities/unique-entity-id'
-
 export interface Bids {
-  userId: UniqueEntityID
+  userEmail: string
   bid: number
 }
 

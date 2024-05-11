@@ -4,8 +4,7 @@ import { Bids } from '@/domain/enterprise/entities/interfaces/ICarProps'
 
 export interface IRegisterBidUseCaseRequest {
   licensePlate: string
-  userId: string
-  bid: number
+  bid: Bids
 }
 
 export type IRegisterBidUseCaseResponse = Either<
