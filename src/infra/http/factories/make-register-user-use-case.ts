@@ -5,10 +5,10 @@ import { RegisterUserUseCase } from '@/domain/application/use-cases/register-use
 export function makeRegisterUserUseCase() {
   const usersRepository = new MongoUsersRepository()
   const bcryptHasher = new BcryptHasher()
-  const registerUserUserCase = new RegisterUserUseCase(
+  const registerUserUseCase = new RegisterUserUseCase(
     usersRepository,
     bcryptHasher,
   )
 
-  return registerUserUserCase
+  return registerUserUseCase
 }
