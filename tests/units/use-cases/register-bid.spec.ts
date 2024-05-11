@@ -36,7 +36,7 @@ describe('Register Bid Use Case', () => {
     })
   })
 
-  it('should not be able to register a bid on a inexistent car', async () => {
+  it('should not be able to register a bid if car does not exist', async () => {
     const result = await sut.execute({
       licensePlate: 'license plate test',
       bid: {

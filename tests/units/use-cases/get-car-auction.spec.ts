@@ -31,7 +31,7 @@ describe('Get Car Auction Use Case', () => {
     })
   })
 
-  it('should not be able to get an inexistent car', async () => {
+  it('should not be able to get an nonexistent car', async () => {
     const result = await sut.execute({
       licensePlate: 'license plate test',
     })
