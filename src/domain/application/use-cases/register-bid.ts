@@ -29,8 +29,7 @@ export class RegisterBidUseCase {
     await this.carsRepository.save(car)
 
     return right({
-      licensePlate,
-      bid,
+      car,
     })
   }
 }

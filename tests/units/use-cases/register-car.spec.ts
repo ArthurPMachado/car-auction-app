@@ -5,7 +5,7 @@ import { InMemoryCarsRepository } from 'tests/repositories/in-memory-cars-reposi
 let inMemoryCarsRepository: InMemoryCarsRepository
 let sut: RegisterCarUseCase
 
-describe('Register User Use Case', () => {
+describe('Register Car Use Case', () => {
   beforeEach(() => {
     inMemoryCarsRepository = new InMemoryCarsRepository()
     sut = new RegisterCarUseCase(inMemoryCarsRepository)

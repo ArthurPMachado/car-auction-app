@@ -1,5 +1,6 @@
 import { Either } from '@/core/either'
 import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-error'
+import { Car } from '@/domain/enterprise/entities/car'
 import { Bids } from '@/domain/enterprise/entities/interfaces/ICarProps'
 
 export interface IRegisterBidUseCaseRequest {
@@ -10,7 +11,6 @@ export interface IRegisterBidUseCaseRequest {
 export type IRegisterBidUseCaseResponse = Either<
   ResourceNotFoundError,
   {
-    licensePlate: string
-    bid: Bids
+    car: Car
   }
 >
