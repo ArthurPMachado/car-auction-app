@@ -4,7 +4,7 @@ import { Bids } from '@/domain/enterprise/entities/interfaces/ICarProps'
 export class RankingsBidsAndGetAuctionWinner {
   static rankingsBidsAndGetAuctionWinner(car: Car): Bids {
     const rankingBidsByHighestValue = car.bids.sort(
-      (bidA, bidB) => bidA.bid - bidB.bid,
+      (bidA, bidB) => bidB.bid - bidA.bid,
     )
 
     const bidWinner = rankingBidsByHighestValue[0]

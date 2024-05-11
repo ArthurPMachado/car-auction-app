@@ -3,7 +3,6 @@ import { Car } from '@/domain/enterprise/entities/car'
 export class CarPresenter {
   static toHTTP(car: Car) {
     return {
-      id: car.id.toString(),
       name: car.name,
       licensePlate: car.licensePlate,
       brand: car.brand,
