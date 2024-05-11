@@ -24,7 +24,9 @@ export class MongoService {
 
     this.databaseInstance = this.client.db(DATABASE_DB)
 
-    this.connect()
+    Promise.resolve(this.connect()).then(() => {
+      console.log('Connected to mongo')
+    })
   }
 
   static getInstance() {
@@ -35,7 +37,7 @@ export class MongoService {
     return MongoService.instance
   }
 
-  async connect() {
+  private async connect() {
     try {
       await this.client.connect()
     } catch (error) {
