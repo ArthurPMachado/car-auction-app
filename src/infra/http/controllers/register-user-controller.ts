@@ -9,22 +9,27 @@ export async function registerUserController(
 ) {
   const { name, email, password } = registerUserBodySchema.parse(request.body)
 
-  try {
-    const registerUseCase = makeRegisterUserUseCase()
+  const registerUseCase = makeRegisterUserUseCase()
 
-    await registerUseCase.execute({
-      name,
-      email,
-      password,
-    })
-  } catch (error) {
-    if (error instanceof UserAlreadyExistsError) {
-      return response.status(409).send({
-        message: error.message,
-      })
+  const result = await registerUseCase.execute({
+    name,
+    email,
+    password,
+  })
+
+  if (result.isLeft()) {
+    const error = result.value
+
+    switch (error.constructor) {
+      case UserAlreadyExistsError:
+        return response.status(409).send({
+          message: error.message,
+        })
+      default:
+        return response.status(400).send({
+          message: error.message,
+        })
     }
-
-    throw error
   }
 
   return response.status(201).send()
