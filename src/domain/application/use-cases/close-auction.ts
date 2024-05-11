@@ -6,7 +6,7 @@ import {
   ICloseAuctionUseCaseResponse,
 } from './interfaces/ICloseAuctionUseCase'
 import { BidAlreadyFinishedError } from './errors/bid-already-finished-error'
-import { RankingsBidsAndGetBidWinner } from './utils/ranking-bids-and-get-bid-winner'
+import { RankingsBidsAndGetAuctionWinner } from './utils/ranking-bids-and-get-auction-winner'
 
 export class CloseAuctionUseCase {
   constructor(private carsRepository: ICarsRepository) {}
@@ -28,13 +28,13 @@ export class CloseAuctionUseCase {
 
     await this.carsRepository.save(car)
 
-    const bidWinner =
-      RankingsBidsAndGetBidWinner.rankingsBidsAndGetBidWinner(car)
+    const auctionWinner =
+      RankingsBidsAndGetAuctionWinner.rankingsBidsAndGetAuctionWinner(car)
 
     const response = {
       car,
-      userEmail: bidWinner.userEmail,
-      bidValue: bidWinner.bid,
+      userEmail: auctionWinner.userEmail,
+      bidValue: auctionWinner.bid,
     }
 
     return right(response)
