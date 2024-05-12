@@ -40,5 +40,5 @@ export async function authenticateController(
     expiresIn: env.TOKEN_EXPIRATION,
   })
 
-  return response.json(token).send()
+  return response.json({ access_token: token }).send()
 }
