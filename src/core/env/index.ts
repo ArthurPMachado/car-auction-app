@@ -14,8 +14,6 @@ const envSchema = z.object({
   MONGO_INITDB_ROOT_USERNAME: z.string(),
   MONGO_INITDB_ROOT_PASSWORD: z.string(),
   MONGO_INITDB_DATABASE: z.string(),
-  SERVER_HOST: z.string(),
-  SERVER_PORT: z.coerce.number(),
   TOKEN_EXPIRATION: z.string().optional().default('15m'),
 })
 
