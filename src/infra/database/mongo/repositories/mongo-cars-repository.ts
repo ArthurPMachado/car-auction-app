@@ -52,6 +52,16 @@ export class MongoCarsRepository implements ICarsRepository {
   }
 
   async save(car: Car): Promise<void> {
-    await this.carsCollection.updateOne({ licensePlate: car.licensePlate }, car)
+    await this.carsCollection.updateOne(
+      { licensePlate: car.licensePlate },
+      {
+        $push: {
+          bids: car.bids[0],
+        },
+        $set: {
+          isAuctionFinished: car.isAuctionFinished,
+        },
+      },
+    )
   }
 }
