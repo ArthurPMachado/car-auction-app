@@ -1,10 +1,14 @@
 import express, { Request, Response } from 'express'
 import { ZodError } from 'zod'
+import cors from 'cors'
 import { env } from './core/env'
+import { router } from './infra/http/routes'
 
 export const app = express()
 
 app.use(express.json())
+app.use(cors())
+app.use(router)
 
 app.use((error: Error, _: Request, response: Response) => {
   if (error instanceof ZodError) {
