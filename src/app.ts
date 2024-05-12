@@ -10,6 +10,10 @@ app.use(express.json())
 app.use(cors())
 app.use(router)
 
+app.get('/health', (request: Request, response: Response) => {
+  response.send('App is running!')
+})
+
 app.use((error: Error, _: Request, response: Response) => {
   if (error instanceof ZodError) {
     return response
