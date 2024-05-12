@@ -3,7 +3,7 @@ import { ResourceNotFoundError } from '@/core/errors/errors/resource-not-found-e
 import { makeGetCarAuctionUseCase } from '../factories/make-get-car-auction-use-case'
 import { CarPresenter } from '../presenters/car-presenter'
 
-export async function GetCarAuctionController(
+export async function getCarAuctionController(
   request: Request,
   response: Response,
 ) {

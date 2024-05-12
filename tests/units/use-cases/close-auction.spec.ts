@@ -52,7 +52,7 @@ describe('Close Auction Use Case', () => {
     })
   })
 
-  it('should not be able to close an auction of an inexistent car', async () => {
+  it('should not be able to close an auction if car does not exist', async () => {
     const result = await sut.execute({
       licensePlate: 'license plate test',
     })
