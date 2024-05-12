@@ -13,13 +13,15 @@ export async function verifyJwt(
   const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    throw new TokenMissingError()
+    return response.status(401).json({
+      message: new TokenMissingError().message,
+    })
   }
 
   const [, token] = authHeader.split(' ')
 
   try {
-    const { sub: userId } = verify(token, env.JWT_PUBLIC_KEY) as IPayload
+    const { sub: userId } = verify(token, env.JWT_SECRET) as IPayload
 
     request.user = {
       id: userId,
@@ -27,6 +29,8 @@ export async function verifyJwt(
 
     next()
   } catch {
-    throw new InvalidTokenError()
+    return response.status(401).json({
+      message: new InvalidTokenError().message,
+    })
   }
 }

@@ -37,7 +37,7 @@ export async function authenticateController(
 
     const userId = result.value.user.id.toString()
 
-    const token = sign({}, env.JWT_PRIVATE_KEY, {
+    const token = sign({}, env.JWT_SECRET, {
       subject: userId,
       expiresIn: env.TOKEN_EXPIRATION,
     })
