@@ -7,5 +7,5 @@ export const registerCarBodySchema = z.object({
   category: z.string(),
   year: z.number(),
   specifications: z.string(),
-  initialBid: z.number(),
+  initialBid: z.number().positive(),
 })
