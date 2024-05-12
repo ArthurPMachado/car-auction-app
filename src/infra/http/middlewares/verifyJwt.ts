@@ -1,4 +1,3 @@
-import { left } from '@/core/either'
 import { NextFunction, Request, Response } from 'express'
 import { verify } from 'jsonwebtoken'
 import { TokenMissingError } from '../errors/token-missing-error'
@@ -14,7 +13,7 @@ export async function verifyJwt(
   const authHeader = request.headers.authorization
 
   if (!authHeader) {
-    return left(new TokenMissingError())
+    throw new TokenMissingError()
   }
 
   const [, token] = authHeader.split(' ')
@@ -28,6 +27,6 @@ export async function verifyJwt(
 
     next()
   } catch {
-    return left(new InvalidTokenError())
+    throw new InvalidTokenError()
   }
 }
