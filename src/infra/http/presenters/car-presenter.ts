@@ -9,6 +9,7 @@ export class CarPresenter {
       category: car.category,
       year: car.year,
       specifications: car.specifications,
+      isAuctionFinished: car.isAuctionFinished,
       initialBid: car.initialBid,
       bids: car.bids,
     }

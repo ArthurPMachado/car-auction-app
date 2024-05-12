@@ -9,8 +9,9 @@ export class AuctionWinnerPresenter {
       category: car.category,
       year: car.year,
       specifications: car.specifications,
-      userEmail,
-      bidValue,
+      initialBid: car.initialBid,
+      auctionWinner: userEmail,
+      auctionWinnerBid: bidValue,
     }
   }
 }

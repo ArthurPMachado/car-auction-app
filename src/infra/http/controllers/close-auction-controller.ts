@@ -4,7 +4,7 @@ import { makeCloseAuctionUseCase } from '../factories/make-close-auction-use-cas
 import { AuctionWinnerPresenter } from '../presenters/auction-winner-presenter'
 import { AuctionAlreadyFinishedError } from '@/domain/application/use-cases/errors/auction-already-finished-error'
 
-export async function CloseAuctionController(
+export async function closeAuctionController(
   request: Request,
   response: Response,
 ) {
