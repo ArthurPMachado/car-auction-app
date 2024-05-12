@@ -1,4 +1,4 @@
-import { Collection, ObjectId } from 'mongodb'
+import { Collection } from 'mongodb'
 import { IUsersRepository } from '@/domain/application/repositories/users-repository'
 import { User } from '@/domain/enterprise/entities/user'
 import { env } from '@/core/env'
@@ -22,10 +22,7 @@ export class MongoUsersRepository implements IUsersRepository {
   }
 
   async create(user: User): Promise<void> {
-    const _id = new ObjectId(user.id.toString())
-
     await this.usersCollection.insertOne({
-      _id,
       name: user.name,
       email: user.email,
       password: user.password,

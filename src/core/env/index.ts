@@ -7,7 +7,6 @@ const envSchema = z.object({
   HOST: z.coerce.string().default('0.0.0.0'),
   JWT_PRIVATE_KEY: z.string(),
   JWT_PUBLIC_KEY: z.string(),
-  DATABASE_HOST: z.string(),
   DATABASE_PORT: z.coerce.number().default(27017),
   USERS_COLLECTION: z.string().default('users'),
   CARS_COLLECTION: z.string().default('cars'),

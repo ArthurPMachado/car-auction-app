@@ -1,4 +1,4 @@
-import { Collection, ObjectId } from 'mongodb'
+import { Collection } from 'mongodb'
 import { ICarsRepository } from '@/domain/application/repositories/cars-repository'
 import { ICarProps } from '@/domain/enterprise/entities/interfaces/ICarProps'
 import { Car } from '@/domain/enterprise/entities/car'
@@ -23,10 +23,7 @@ export class MongoCarsRepository implements ICarsRepository {
   }
 
   async create(car: Car): Promise<void> {
-    const _id = new ObjectId(car.id.toString())
-
     await this.carsCollection.insertOne({
-      _id,
       name: car.name,
       brand: car.brand,
       licensePlate: car.licensePlate,

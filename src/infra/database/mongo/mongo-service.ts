@@ -14,11 +14,10 @@ export class MongoService {
       MONGO_INITDB_ROOT_USERNAME: DATABASE_USERNAME,
       MONGO_INITDB_ROOT_PASSWORD: DATABASE_PASSWORD,
       MONGO_INITDB_DATABASE: DATABASE_DB,
-      DATABASE_HOST,
       DATABASE_PORT,
     } = env
 
-    const URI = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}`
+    const URI = `mongodb://${DATABASE_USERNAME}:${DATABASE_PASSWORD}@localhost:${DATABASE_PORT}`
 
     this.client = new MongoClient(URI)
 
