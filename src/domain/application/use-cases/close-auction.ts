@@ -26,7 +26,7 @@ export class CloseAuctionUseCase {
 
     car.isAuctionFinished = true
 
-    await this.carsRepository.save(car)
+    await this.carsRepository.closeAuction(car)
 
     const auctionWinner =
       RankingsBidsAndGetAuctionWinner.rankingsBidsAndGetAuctionWinner(car)

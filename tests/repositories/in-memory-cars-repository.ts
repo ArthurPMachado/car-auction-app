@@ -1,5 +1,6 @@
 import { ICarsRepository } from '@/domain/application/repositories/cars-repository'
 import { Car } from '@/domain/enterprise/entities/car'
+import { Bids } from '@/domain/enterprise/entities/interfaces/ICarProps'
 
 export class InMemoryCarsRepository implements ICarsRepository {
   public items: Car[] = []
@@ -18,11 +19,19 @@ export class InMemoryCarsRepository implements ICarsRepository {
     return car
   }
 
-  async save(car: Car) {
+  async registerBid(licensePlate: string, bid: Bids) {
+    const carIndex = this.items.findIndex(
+      (item) => item.licensePlate === licensePlate,
+    )
+
+    this.items[carIndex].bids.push(bid)
+  }
+
+  async closeAuction(car: Car): Promise<void> {
     const carIndex = this.items.findIndex(
       (item) => item.licensePlate === car.licensePlate,
     )
 
-    this.items[carIndex] = car
+    this.items[carIndex].isAuctionFinished = true
   }
 }

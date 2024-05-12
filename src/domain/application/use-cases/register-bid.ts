@@ -26,7 +26,7 @@ export class RegisterBidUseCase {
 
     car.bids.push(bid)
 
-    await this.carsRepository.save(car)
+    await this.carsRepository.registerBid(car.licensePlate, bid)
 
     return right({
       car,

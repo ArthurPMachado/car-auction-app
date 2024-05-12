@@ -1,6 +1,9 @@
 import { Collection } from 'mongodb'
 import { ICarsRepository } from '@/domain/application/repositories/cars-repository'
-import { ICarProps } from '@/domain/enterprise/entities/interfaces/ICarProps'
+import {
+  Bids,
+  ICarProps,
+} from '@/domain/enterprise/entities/interfaces/ICarProps'
 import { Car } from '@/domain/enterprise/entities/car'
 import { MongoService } from '../mongo-service'
 import { env } from '@/core/env'
@@ -51,13 +54,21 @@ export class MongoCarsRepository implements ICarsRepository {
     return car
   }
 
-  async save(car: Car): Promise<void> {
+  async registerBid(licensePlate: string, bid: Bids): Promise<void> {
+    await this.carsCollection.updateOne(
+      { licensePlate },
+      {
+        $push: {
+          bids: bid,
+        },
+      },
+    )
+  }
+
+  async closeAuction(car: Car): Promise<void> {
     await this.carsCollection.updateOne(
       { licensePlate: car.licensePlate },
       {
-        $push: {
-          bids: car.bids[0],
-        },
         $set: {
           isAuctionFinished: car.isAuctionFinished,
         },
