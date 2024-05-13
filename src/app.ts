@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express'
 import cors from 'cors'
+import swaggerUi from 'swagger-ui-express'
 import { router } from './infra/http/routes'
+import swaggerFile from '../swagger.json'
 
 export const app = express()
 
@@ -11,3 +13,5 @@ app.use(router)
 app.get('/health', (request: Request, response: Response) => {
   response.send('App is running!')
 })
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile))
