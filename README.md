@@ -46,7 +46,13 @@ uma imagem docker
 $ docker-compose up -d
 ```
 
-Nesta etapa ocorrerá a subida do container mongo. Quando terminar, a aplicação estará pronta para uso
+Nesta etapa ocorrerá a subida do container mongo. Quando terminar, a aplicação estará pronta para uso,
+sendo necessário rodar apenas o comando para iniciar a aplicação, no caso:
+
+**Iniciando docker**
+```
+$ pnpm run dev
+```
 
 # Autor
 
